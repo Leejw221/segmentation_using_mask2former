@@ -1,0 +1,48 @@
+model:
+  # Default model configuration for HuggingFace
+  name: "facebook/mask2former-swin-base-coco-panoptic"
+  dataset: "coco"  # coco, ade20k, cityscapes, mapillary-vistas
+  device: "auto"  # auto, cpu, cuda
+  confidence_threshold: 0.1
+  
+  # Available HuggingFace models for selection
+  available_models:
+    # COCO Panoptic Segmentation Models
+    - "facebook/mask2former-swin-tiny-coco-panoptic"
+    - "facebook/mask2former-swin-small-coco-panoptic" 
+    - "facebook/mask2former-swin-base-coco-panoptic"
+    - "facebook/mask2former-swin-large-coco-panoptic"
+    
+    # ADE20k Semantic Models (for semantic segmentation)
+    - "facebook/mask2former-swin-small-ade-semantic"
+    - "facebook/mask2former-swin-base-ade-semantic"
+    - "facebook/mask2former-swin-large-ade-semantic"
+    
+    # Cityscapes Semantic Models (for road/driving scene segmentation)
+    - "facebook/mask2former-swin-tiny-cityscapes-semantic"
+    - "facebook/mask2former-swin-small-cityscapes-semantic"
+    - "facebook/mask2former-swin-large-cityscapes-semantic"
+    
+    # Mapillary Vistas Semantic Models (for street scene segmentation)
+    - "facebook/mask2former-swin-large-mapillary-vistas-semantic"
+
+processing:
+  # Image preprocessing options
+  do_resize: true
+  do_normalize: true  
+  image_mean: [0.485, 0.456, 0.406]
+  image_std: [0.229, 0.224, 0.225]
+
+data:
+  # 상대 경로로 설정 - 다른 컴퓨터에서도 사용 가능
+  input_path: "./data/input"
+  output_path: "./data/output"
+  
+  # 지원되는 이미지 형식
+  supported_extensions:
+    - ".jpg"
+    - ".jpeg"
+    - ".png"
+    - ".bmp"
+    - ".tiff"
+    - ".tif"
